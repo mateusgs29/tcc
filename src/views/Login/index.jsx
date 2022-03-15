@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
-import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity } from 'react-native'
+import { 
+  KeyboardAvoidingView, 
+  Platform, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  Image
+} from 'react-native'
 
 import firebase from '../../config/firebaseConfig'
 import styles from './style'
+import logo from '../../../assets/icon.png'
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   
@@ -21,14 +29,17 @@ const Login = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "position" : ""}
+      style={styles.container}
     >
-      <Text>Login</Text>
+      <Image style={styles.imageLogo} source={logo} />
+      <Text style={styles.title}>Login</Text>
       <TextInput 
         placeholder='E-mail'
         type='text'
         value={email}
-        onChangeText={(text) => setEmail(texto)}
+        onChangeText={(text) => setEmail(text)}
+        style={styles.input}
       />
       <TextInput
         placeholder='Senha'
@@ -36,16 +47,18 @@ const Login = () => {
         type='text'
         value={password}
         onChangeText={(text) => setPassword(text)}
+        style={styles.input}
       />
       <TouchableOpacity
         disabled={email === '' || password === ''}
         onPress={loginFirebase}
+        style={styles.btnLogin}
       >
-        <Text>Entrar</Text>
+        <Text style={styles.textBtnLogin}>Entrar</Text>
       </TouchableOpacity>
-      <Text>
+      <Text style={styles.textRegister}>
         Não tem uma conta?
-        <Text onPress={() => navigation.navigate("Register")}>Se cadastrar</Text>
+        <Text onPress={() => navigation.navigate("Register")} style={styles.linkRegister}> Se cadastrar</Text>
       </Text>
     </KeyboardAvoidingView>
   )
