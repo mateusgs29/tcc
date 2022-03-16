@@ -36,14 +36,14 @@ const Register = ({ navigation }) => {
         placeholder='Nome'
         type='text'
         value={name}
-        onChangeText={(text) => setName(texto)}
+        onChangeText={(text) => setName(text)}
         style={styles.input}
       />
       <TextInput 
         placeholder='E-mail'
         type='text'
         value={email}
-        onChangeText={(text) => setEmail(texto)}
+        onChangeText={(text) => setEmail(text)}
         style={styles.input}
       />
       <TextInput
