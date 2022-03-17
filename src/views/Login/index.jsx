@@ -16,7 +16,7 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   
-  const loginFirebase = ({ navigation }) => {
+  const loginFirebase = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user
