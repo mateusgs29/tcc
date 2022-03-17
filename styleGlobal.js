@@ -3,4 +3,5 @@ export const colors = {
   purpleSecondary: "#9D4EDD",
   white: "#E5E5E5",
   black: "#202020",
+  blackLight: "#5B5B5B"
 }
