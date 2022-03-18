@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
-import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, Image } from 'react-native'
+import { KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, Image, View } from 'react-native'
 
 import firebase from '../../config/firebaseConfig'
 import styles from './style'
 import logo from '../../../assets/icon.png'
+import { Feather } from '@expo/vector-icons';
 
 const Register = ({ navigation }) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState({
+    isError: false,
+    message: ""
+  })
   
   const createUserFirebase = () => {
+    setError({...error, isError: false})
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user
@@ -20,8 +26,14 @@ const Register = ({ navigation }) => {
           navigation.navigate("Login")
         })
       }).catch((error) => {
-        console.log(error)
-        const { code, message } = error
+        console.log(error.code)
+        if(error.code === "auth/weak-password") {
+          setError({isError: true, message: "Senha deve ter no mínimo 6 caracteres!"})
+        } else if (error.code === "auth/email-already-in-use") {
+          setError({isError: true, message: "Esse e-mail já foi cadastrado!"})
+        } else {
+          setError({isError: true, message: "Ocorreu um erro, tente novamente mais tarde"})
+        }
       })
   }
 
@@ -54,6 +66,11 @@ const Register = ({ navigation }) => {
         onChangeText={(text) => setPassword(text)}
         style={styles.input}
       />
+      {error.isError &&
+        <Text style={styles.textError}>
+          <Feather name="alert-triangle" size={16} /> {error.message}
+        </Text>
+      }
       <TouchableOpacity
         disabled={email === '' || password === '' || name === ''}
         onPress={createUserFirebase}
