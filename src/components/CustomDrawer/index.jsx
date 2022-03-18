@@ -23,7 +23,7 @@ const CustomDrawer = (props) => {
         <Text style={styles.userEmail}>{user.email}</Text>
       </View>
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} style={styles.teste} />
+        <DrawerItemList {...props} />
       </DrawerContentScrollView>
       <Text onPress={logoutFirebase} style={styles.textLogout}>
         Sair <Ionicons name="exit-outline" size={16} color="black" />
