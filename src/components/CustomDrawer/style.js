@@ -27,10 +27,6 @@ const styles = StyleSheet.create({
   textLogout: {
     textAlign: "center",
     margin: 20,
-  },
-  teste: {
-    backgroundColor: "#0f0",
-    color: "red"
   }
 })
 
