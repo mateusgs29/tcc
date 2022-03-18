@@ -47,6 +47,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.purpleSecondary,
     textDecorationLine: "underline"
+  },
+  textError: {
+    marginTop: 10,
+    color: "#e63946",
+    fontWeight: "bold",
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 5
   }
 })
 
