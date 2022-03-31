@@ -11,6 +11,7 @@ const CustomDrawer = (props) => {
   const logoutFirebase = () => {
     firebase.auth().signOut()
       .then(() => {
+        props.navigation.navigate("Login")
       }).catch((error) => {
         console.log(error)
       })
