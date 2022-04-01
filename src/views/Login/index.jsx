@@ -53,6 +53,8 @@ const Login = ({ navigation }) => {
         value={email}
         onChangeText={(text) => setEmail(text)}
         style={styles.input}
+        autoCapitalize="none"
+        keyboardType="email-address"
       />
       <TextInput
         placeholder='Senha'
