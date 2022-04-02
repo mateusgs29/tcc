@@ -37,9 +37,9 @@ const Configuration = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate("InfoApp")}>
         <Text>Sobre o aplicativo</Text>
       </TouchableOpacity>
-      <TouchableOpacity >
+      {/* <TouchableOpacity >
         <Text>Deletar conta</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }
