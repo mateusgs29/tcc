@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   textError: {
     marginTop: 10,
-    color: "#e63946",
+    color: colors.red,
     fontWeight: "bold",
     paddingVertical: 5,
     paddingHorizontal: 10,
