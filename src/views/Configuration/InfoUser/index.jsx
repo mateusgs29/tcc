@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
 import firebase from '../../../config/firebaseConfig'
 import { Ionicons, Feather } from '@expo/vector-icons'
 import styles from './style'
@@ -12,12 +12,14 @@ const InfoUser = ({ navigation }) => {
   const [newPassword, setNewPassword] = useState("")
   const [changePassword, setChangePassword] = useState(false)
   const [editable, setEditable] = useState(false)
+  const [loading, setLoading] = useState(false) 
   const [error, setError] = useState({
     isError: false,
     message: ""
   })
   
   const changeUserData = async () => {
+    setLoading(true)
     setError({isError: false, message: ""})
     try {
       await user.updateProfile({ displayName: name })
@@ -35,12 +37,15 @@ const InfoUser = ({ navigation }) => {
       } else {
         setError({isError: true, message: "Ocorreu um erro, tente novamente mais tarde"})
       }
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Informações do usuário</Text>
+
       <TextInput
         value={user.email}
         editable={false}
@@ -64,6 +69,7 @@ const InfoUser = ({ navigation }) => {
             value={oldPassword}
             onChangeText={(text) => setOldPassword(text)}
             style={styles.input}
+            editable={editable}
           />
 
           <TextInput
@@ -73,9 +79,11 @@ const InfoUser = ({ navigation }) => {
             value={newPassword}
             onChangeText={(text) => setNewPassword(text)}
             style={styles.input}
+            editable={editable}
           />
         </>
       )}
+      
       {error.isError &&
         <Text style={styles.textError}>
           <Feather name="alert-triangle" size={16} /> {error.message}
@@ -93,18 +101,31 @@ const InfoUser = ({ navigation }) => {
       </View>
 
       {!editable ? (
-        <TouchableOpacity onPress={() => setEditable(true)} style={[styles.btn, styles.btnEditable]}>
-          <Text style={styles.textBtnEditable}>Editar</Text>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity onPress={() => setEditable(true)} style={[styles.btn, styles.btnEditable]}>
+            <Text style={styles.textBtnEditable}>Editar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.btn, styles.btnCancel]}>
+            <Text style={styles.textBtnBlack}>Voltar</Text>
+          </TouchableOpacity>
+        </>
       ) : (
-        <View>
-          <TouchableOpacity onPress={changeUserData} style={[styles.btn, styles.btnSave]}>
-            <Text style={styles.textBtnEditable}>Salvar</Text>
+        <>
+          <TouchableOpacity 
+            onPress={changeUserData} 
+            style={[styles.btn, styles.btnSave]}
+            disabled={loading}
+          >
+            {loading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text style={styles.textBtnEditable}>Salvar</Text>
+            )}
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setEditable(false)} style={[styles.btn, styles.btnCancel]}>
             <Text style={styles.textBtnBlack}>Cancelar</Text>
           </TouchableOpacity>
-        </View>
+        </>
 
       )}
     </View>
