@@ -14,6 +14,7 @@ import Games from './src/views/Games'
 
 import InfoUser from './src/views/Configuration/InfoUser';
 import InfoApp from './src/views/Configuration/InfoApp';
+import DeleteAccount from './src/views/Configuration/DeleteAccount';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -34,6 +35,11 @@ const ConfigurationNavigator = () => {
       <Stack.Screen 
         name="InfoApp"
         component={InfoApp}
+        options={{ presentation: "modal" }}
+      />
+      <Stack.Screen 
+        name="DeleteAccount"
+        component={DeleteAccount}
         options={{ presentation: "modal" }}
       />
     </Stack.Navigator>
