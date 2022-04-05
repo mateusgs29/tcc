@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { colors } from "../../../styleGlobal";
 
 const styles = StyleSheet.create({
   container: {
@@ -6,8 +7,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  modal: {
-    backgroundColor: "red",
+  btn: {
+    margin: 10,
+  }, 
+  textBtn: {
+    textAlign: "center",
+    fontSize: 16
+  },
+  textBtnDelete: {
+    textAlign: "center",
+    fontSize: 16,
+    color: colors.red
   }
 })
 
