@@ -1,6 +1,6 @@
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import React from 'react'
-import { ScrollView, SafeAreaView, Text, View } from 'react-native'
+import { ScrollView, SafeAreaView, Text, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import firebase from '../../config/firebaseConfig'
 import styles from './style'
@@ -26,9 +26,11 @@ const CustomDrawer = (props) => {
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <Text onPress={logoutFirebase} style={styles.textLogout}>
-        Sair <Ionicons name="exit-outline" size={16} color="black" />
-      </Text>
+      <TouchableOpacity onPress={logoutFirebase} >
+        <Text style={styles.textLogout}>
+          Sair <Ionicons name="exit-outline" size={16} color="black" />
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
     
   )
