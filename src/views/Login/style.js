@@ -39,14 +39,22 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "bold"
   },
+  containerLinkRegister: {
+    flexDirection: "row",
+    marginTop: 25,
+    alignItems: "center"
+  },
   textRegister: {
-    marginTop: 30,
     color: colors.black
   },
-  linkRegister: {
+  btnRegister: {
+    marginLeft: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.purpleSecondary
+  },
+  textBtnRegister: {
     fontSize: 16,
     color: colors.purpleSecondary,
-    textDecorationLine: "underline"
   },
   textError: {
     marginTop: 10,

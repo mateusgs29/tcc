@@ -39,14 +39,22 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "bold"
   },
+  containerLinkLogin: {
+    flexDirection: "row",
+    marginTop: 25,
+    alignItems: "center"
+  },
   textLogin: {
-    marginTop: 30,
     color: colors.black
   },
-  linkLogin: {
+  btnLogin: {
+    marginLeft: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.purpleSecondary
+  },
+  textBtnLogin: {
     fontSize: 16,
     color: colors.purpleSecondary,
-    textDecorationLine: "underline"
   },
   textError: {
     marginTop: 10,
