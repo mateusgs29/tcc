@@ -26,19 +26,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 5
   },
-  btnLogin: {
-    backgroundColor: colors.purplePrimary,
-    width: 200,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 50,
-    marginTop: 30
-  },
-  textBtnLogin: {
-    color: colors.white,
-    fontWeight: "bold"
-  },
   containerLinkRegister: {
     flexDirection: "row",
     marginTop: 25,
