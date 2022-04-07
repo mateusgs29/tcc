@@ -1,10 +1,17 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
+import styles from './style'
 
-const Games = () => {
+const Games = ({ navigation }) => {
   return (
-    <View>
-      <Text>INFO</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Escolha o tipo de jogo</Text>
+      <TouchableOpacity 
+        onPress={() => navigation.navigate("Memorization")}
+        style={styles.optionGame}
+      >
+        <Text style={styles.textOptionGame}>Memorização</Text>
+      </TouchableOpacity>
     </View>
   )
 }
