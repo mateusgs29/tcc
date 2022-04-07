@@ -48,31 +48,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     color: colors.black
   },
-  btn: {
-    width: 200,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 50,
-    marginTop: 20
-  },
-  btnEditable: {
-    backgroundColor: colors.purpleSecondary,
-  },
-  btnSave: {
-    backgroundColor: colors.green
-  },
-  btnCancel: {
-    backgroundColor: colors.gray,
+  marginTopBtn: {
     marginTop: 10
-  },
-  textBtnEditable: {
-    color: "#fff",
-    fontWeight: "bold"
-  },
-  textBtnBlack: {
-    fontWeight: "bold",
-    color: colors.black
   },
   textError: {
     marginTop: 10,

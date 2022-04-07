@@ -7,13 +7,13 @@ import {
   TouchableOpacity, 
   Image,
   View,
-  ActivityIndicator
 } from 'react-native'
 
 import firebase from '../../config/firebaseConfig'
 import styles from './style'
 import logo from '../../../assets/icon.png'
 import { Feather } from '@expo/vector-icons';
+import CustomButton from '../../components/CustomButton'
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
@@ -75,7 +75,7 @@ const Login = ({ navigation }) => {
         </Text>
       }
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         disabled={email === '' || password === '' || loading}
         onPress={loginFirebase}
         style={styles.btnLogin}
@@ -85,8 +85,16 @@ const Login = ({ navigation }) => {
         ) : (
           <Text style={styles.textBtnLogin}>Entrar</Text>
         )}
-      </TouchableOpacity>
-
+      </TouchableOpacity> */}
+      <CustomButton 
+        onPress={loginFirebase}
+        color="purple"
+        loading={loading}
+        optionsDisabled={email === '' || password === ''}
+      >
+        Entrar
+      </CustomButton>
+    
       <View style={styles.containerLinkRegister}>
         <Text style={styles.textRegister}>
           Não tem uma conta?

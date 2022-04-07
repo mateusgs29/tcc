@@ -7,13 +7,13 @@ import {
   TouchableOpacity, 
   Image, 
   View,
-  ActivityIndicator
 } from 'react-native'
 
 import firebase from '../../config/firebaseConfig'
 import styles from './style'
 import logo from '../../../assets/icon.png'
 import { Feather } from '@expo/vector-icons';
+import CustomButton from '../../components/CustomButton'
 
 const Register = ({ navigation }) => {
   const [name, setName] = useState("")
@@ -87,17 +87,14 @@ const Register = ({ navigation }) => {
         </Text>
       }
 
-      <TouchableOpacity
-        disabled={email === '' || password === '' || name === '' || loading}
+      <CustomButton 
         onPress={createUserFirebase}
-        style={styles.btnRegister}
+        color="purple"
+        loading={loading}
+        optionsDisabled={email === '' || password === '' || name === ''}
       >
-        {loading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <Text style={styles.textBtnRegister}>Cadastrar</Text>
-        )}
-      </TouchableOpacity>
+        Cadastrar
+      </CustomButton>
 
       <View style={styles.containerLinkLogin}>
         <Text style={styles.textLogin}>

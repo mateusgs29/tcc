@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import firebase from '../../../config/firebaseConfig'
 import { Ionicons, Feather } from '@expo/vector-icons'
 import styles from './style'
+import CustomButton from '../../../components/CustomButton'
 
 const InfoUser = ({ navigation }) => {
   const user = firebase.auth().currentUser;
@@ -102,29 +103,33 @@ const InfoUser = ({ navigation }) => {
 
       {!editable ? (
         <>
-          <TouchableOpacity onPress={() => setEditable(true)} style={[styles.btn, styles.btnEditable]}>
-            <Text style={styles.textBtnEditable}>Editar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.btn, styles.btnCancel]}>
-            <Text style={styles.textBtnBlack}>Voltar</Text>
-          </TouchableOpacity>
+          <CustomButton onPress={() => setEditable(true)} color="purple">
+            Editar
+          </CustomButton>
+          <CustomButton
+            onPress={() => navigation.goBack()}
+            color="gray"
+            newStyle={styles.marginTopBtn}
+          >
+            Voltar
+          </CustomButton>
         </>
       ) : (
         <>
-          <TouchableOpacity 
+          <CustomButton
             onPress={changeUserData} 
-            style={[styles.btn, styles.btnSave]}
-            disabled={loading}
+            color="green"
+            loading={loading}
           >
-            {loading ? (
-              <ActivityIndicator size="small" color="#fff" />
-            ) : (
-              <Text style={styles.textBtnEditable}>Salvar</Text>
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setEditable(false)} style={[styles.btn, styles.btnCancel]}>
-            <Text style={styles.textBtnBlack}>Cancelar</Text>
-          </TouchableOpacity>
+            Salvar
+          </CustomButton>
+          <CustomButton
+            onPress={() => setEditable(false)}
+            color="gray"
+            newStyle={styles.marginTopBtn}
+          >
+            Cancelar
+          </CustomButton>
         </>
 
       )}

@@ -28,27 +28,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     color: colors.black
   },
-  btn: {
-    width: 200,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 50,
-    marginTop: 20
-  },
-  btnDelete: {
-    backgroundColor: colors.red
-  },
-  btnCancel: {
-    backgroundColor: colors.gray,
+  marginTopBtn: {
     marginTop: 10
-  },
-  textBtnDelete: {
-    color: "#fff",
-    fontWeight: "bold"
-  },
-  textBtnCancel: {
-    fontWeight: "bold"
   },
   textError: {
     marginTop: 10,

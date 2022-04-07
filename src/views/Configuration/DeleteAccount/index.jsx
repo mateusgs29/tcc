@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import firebase from '../../../config/firebaseConfig'
 import { Feather } from '@expo/vector-icons'
 import styles from './style'
+import CustomButton from '../../../components/CustomButton'
 
 const DeleteAccount = ({ navigation }) => {
   const user = firebase.auth().currentUser;
@@ -54,20 +55,22 @@ const DeleteAccount = ({ navigation }) => {
         </Text>
       }
 
-      <TouchableOpacity 
+      <CustomButton
         onPress={() => deleteAccountFirebase()} 
-        style={[styles.btn, styles.btnDelete]}
-        disabled={loading || password === ""}
+        color="red"
+        loading={loading}
+        optionsDisable={password === ""}
+        newStyle={styles.marginTopBtn}
       >
-        {loading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <Text style={styles.textBtnDelete}>Deletar conta</Text>
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.btn, styles.btnCancel]}>
-        <Text style={styles.textBtnCancel}>Cancelar</Text>
-      </TouchableOpacity>
+        Deletar conta
+      </CustomButton>
+      <CustomButton
+        onPress={() => navigation.goBack()}
+        color="gray"
+        newStyle={styles.marginTopBtn}
+      >
+        Cancelar
+      </CustomButton>
     </View>
   )
 }
