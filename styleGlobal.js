@@ -6,5 +6,6 @@ export const colors = {
   blackLight: "#5B5B5B",
   gray: "#c5c5c5",
   red: "#e63946",
-  green: "#19BF56"
+  green: "#19BF56",
+  orange: "#f77f00"
 }
