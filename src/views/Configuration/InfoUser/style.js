@@ -1,5 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import { StyleSheet } from "react-native";
 import { colors } from "../../../../styleGlobal";
 
 const styles = StyleSheet.create({
