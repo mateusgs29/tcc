@@ -1,4 +1,4 @@
-import Words1 from "../../../components/games/memorization/Words1"
+import Words1 from "../../../games/memorization/Words1"
 
 const memorizationGamesData = [
   {
