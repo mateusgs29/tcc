@@ -68,7 +68,7 @@ const GamesNavigator = () => {
 const PrivateRoutes = () => {
   return (
     <Drawer.Navigator 
-      initialRouteName="Games"
+      initialRouteName="GamesNavigator"
       drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
         drawerActiveTintColor: colors.purpleSecondary,
@@ -77,7 +77,7 @@ const PrivateRoutes = () => {
       }}
     >
       <Drawer.Screen 
-        name="Games" 
+        name="GamesNavigator" 
         component={GamesNavigator} 
         options={{
           drawerIcon: ({color}) => (
@@ -98,7 +98,7 @@ const PrivateRoutes = () => {
         }}
       />
       <Drawer.Screen 
-        name="Configurations" 
+        name="ConfigurationNavigator" 
         component={ConfigurationNavigator} 
         options={{
           drawerIcon: ({color}) => (
