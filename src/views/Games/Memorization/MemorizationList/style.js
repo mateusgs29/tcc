@@ -48,6 +48,20 @@ const styles = StyleSheet.create({
   hardDifficult: {
     color: colors.white,
     backgroundColor: colors.red,
+  },
+  gameDetails: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  gameResult: {
+    fontSize: 14,
+    marginRight: 5,
+  },
+  containerLoading: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 })
 
