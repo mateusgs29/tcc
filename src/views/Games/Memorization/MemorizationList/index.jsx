@@ -1,28 +1,62 @@
-import React from 'react'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native'
 import memorizationGamesData from '../MemorizationInfo'
+import firebase from '../../../../config/firebaseConfig'
 import styles from './style'
 
 const MemorizationList = ({ navigation }) => {
+  const user = firebase.auth().currentUser;
+  const database = firebase.firestore() 
+  const collection = database.collection(user.uid).doc("games").collection("memorization")
+
+  const [hitsGames, setHitsGames] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+
+  const difficult = {
+    easy: "fácil",
+    medium: "médio",
+    hard: "difícil"
+  }
+
+  const getHits = () => {
+    collection.get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+          setHitsGames({ ...hitsGames, [doc.id]: doc.data().hits })
+        })
+      })
+      .catch(console.log)
+      .finally(() => setIsLoading(false))
+  }
+
+  useEffect(getHits, [])
+
+  if (isLoading) return (
+    <View style={styles.containerLoading}>
+      <ActivityIndicator size="large" color="black" />
+    </View>
+  )
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Memorização</Text>
       {memorizationGamesData.map(game => {
-        let difficult = ''
-        if (game.difficult === 'easy') difficult = 'fácil'
-        if (game.difficult === 'medium') difficult = 'médio'
-        if (game.difficult === 'hard') difficult = 'difícil'
-
+  
         return <TouchableOpacity 
           key={`Game-${game.name}`}
-          onPress={() => navigation.navigate(game.name)} 
+          onPress={() => navigation.navigate(game.name, { doc: game.cod, options: game.options })} 
           style={styles.game}
         >
           <Text style={styles.gameName}>{game.name}</Text>
-          <View>
+          <View style={styles.gameDetails}>
             <Text style={[styles.difficult, styles[`${game.difficult}Difficult`]]}>
-              {difficult}
+              {difficult[game.difficult]}
             </Text>
+            {!!hitsGames[game.cod] && 
+              <Text style={styles.gameResult}>
+                Pontuação: {hitsGames[game.cod]}/{game.options.qtdWords}
+              </Text>
+            }
           </View>
         </TouchableOpacity>
       })}
