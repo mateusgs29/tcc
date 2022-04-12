@@ -74,18 +74,6 @@ const Login = ({ navigation }) => {
           <Feather name="alert-triangle" size={16} /> Ocorreu um erro, verifique o email e a senha!
         </Text>
       }
-
-      {/* <TouchableOpacity
-        disabled={email === '' || password === '' || loading}
-        onPress={loginFirebase}
-        style={styles.btnLogin}
-      >
-        {loading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <Text style={styles.textBtnLogin}>Entrar</Text>
-        )}
-      </TouchableOpacity> */}
       <CustomButton 
         onPress={loginFirebase}
         color="purple"
