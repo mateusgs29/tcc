@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../../../styleGlobal";
 
 const styles = StyleSheet.create({
-  containerDetails: {
+  container: {
     flex: 1,
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -40,6 +40,18 @@ const styles = StyleSheet.create({
   },
   btnMarginTop: {
     marginTop: 15
+  },
+  inputAnswers: {
+    width: "90%",
+    backgroundColor: "white",
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+  },
+  result: {
+    fontSize: 40,
+    fontWeight: "bold",
+    color: colors.black
   }
 })
 
