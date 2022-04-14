@@ -6,6 +6,7 @@ import Timer from '../../../components/Timer'
 import words from './wordsData'
 import firebase from '../../../config/firebaseConfig'
 import styles from './style'
+import DetailsGame from '../../../components/ContainerGame/DetailsGame'
 
 const Words1 = ({ navigation, route }) => {
   const user = firebase.auth().currentUser;
@@ -51,29 +52,6 @@ const Words1 = ({ navigation, route }) => {
 
   useEffect(() => getWords(qtdWords), [])
 
-  const DetailsGame = () => {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Palavras 01</Text>
-        <View>
-          <Text style={styles.details}>
-            Leia as palavras a seguir com atenção e tente memorizá-las no tempo de 1 minuto, na ordem que preferir. 
-          </Text>
-          <Text style={styles.details}>
-            Procure utilizar alguma estratégia de memorização. Feito isso, escreva o máximo de palavras que conseguir lembrar.
-          </Text>
-        </View>
-        <CustomButton
-          onPress={() => setStep(2)}
-          color="gray"
-          icon={<FontAwesome5 name="arrow-right" size={20} color="black" />}
-        >
-          Próximo
-        </CustomButton>
-      </View>
-    )
-  }
-
   const Game = () => {
     return (
       <View style={styles.containerGame}>
@@ -102,7 +80,7 @@ const Words1 = ({ navigation, route }) => {
     const [answers, setAnswers] = useState("")
 
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         
         <Text style={styles.details}>Escreva abaixo as palavras que conseguiu memorizar separando-as com vírgula.</Text>
         <TextInput 
@@ -125,12 +103,15 @@ const Words1 = ({ navigation, route }) => {
       </KeyboardAvoidingView>
     )
   }
-
+  
   const ResultGame = () => {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Resultado</Text>
-        <Text style={styles.result}>{result}/{qtdWords}</Text>
+        <View>
+          <Text style={styles.details}>A quantidade de palavras que você acertou foi: </Text>
+          <Text style={styles.result}>{result}/{qtdWords}</Text>
+        </View>
         <CustomButton
           onPress={() => {
             navigation.navigate("Games")
@@ -146,7 +127,13 @@ const Words1 = ({ navigation, route }) => {
 
   return (
     <>
-      {step === 1 && <DetailsGame />}
+      {step === 1 && (
+        <DetailsGame title="Palavras 01" nextStep={setStep}>
+          Leia as palavras a seguir com atenção e tente memorizá-las no tempo de 1 minuto, na ordem que preferir.
+          
+          Procure utilizar alguma estratégia de memorização. Feito isso, escreva o máximo de palavras que conseguir lembrar.
+        </DetailsGame>
+      )}
       {step === 2 && <Game />}
       {step === 3 && <Answers />}
       {step === 4 && <ResultGame />}
