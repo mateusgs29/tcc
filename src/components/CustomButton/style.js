@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green
   },
   greenTextBtn: {
-    color: colors.white
+    color: "#fff"
   },
   redBtn: {
     backgroundColor: colors.red
