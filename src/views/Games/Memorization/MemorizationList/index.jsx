@@ -21,9 +21,11 @@ const MemorizationList = ({ navigation }) => {
   const getHits = () => {
     collection.get()
       .then((querySnapshot) => {
+        const objTemp = {}
         querySnapshot.forEach(doc => {
-          setHitsGames({ ...hitsGames, [doc.id]: doc.data().hits })
+          objTemp[doc.id] = doc.data().hits
         })
+        setHitsGames({ ...objTemp })
       })
       .catch(console.log)
       .finally(() => setIsLoading(false))
@@ -54,7 +56,7 @@ const MemorizationList = ({ navigation }) => {
             </Text>
             {!!hitsGames[game.cod] && 
               <Text style={styles.gameResult}>
-                Pontuação: {hitsGames[game.cod]}/{game.options.qtdWords}
+                Pontuação: {hitsGames[game.cod]}/{game.qtdResult}
               </Text>
             }
           </View>
