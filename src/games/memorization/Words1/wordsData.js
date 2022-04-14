@@ -6,11 +6,24 @@ const words = [
   "Caderno",
   "Sabonete",
   "Escova",
-  "Lápis",
+  "Caneta",
   "Cachorro",
   "Garota",
   "Mãe",
   "Menino",
+  "Peixe",
+  "Bola",
+  "Guarrafa",
+  "Celular",
+  "Tio",
+  "Ventilador",
+  "Verde",
+  "Azul",
+  "Roxo",
+  "Bateria",
+  "Guitarra",
+  "Bolo",
+  "Farinha"
 ]
 
 export default words
