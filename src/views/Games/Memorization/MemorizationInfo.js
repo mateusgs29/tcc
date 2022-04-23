@@ -1,4 +1,5 @@
 import HouseWords1 from "../../../games/memorization/HouseWords1"
+import Orders1 from "../../../games/memorization/Orders1"
 import Words1 from "../../../games/memorization/Words1"
 
 const memorizationGamesData = [
@@ -20,6 +21,16 @@ const memorizationGamesData = [
     qtdResult: 12,
     options: {
       qtdWordsGroup: 4,
+    }
+  },
+  {
+    name: "Pedidos 01",
+    cod: "orders1",
+    component: Orders1,
+    difficult: "hard",
+    qtdResult: 5,
+    options: {
+      qtdOrders: 5
     }
   }
 ]
