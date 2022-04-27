@@ -19,6 +19,7 @@ import DeleteAccount from './src/views/Configuration/DeleteAccount';
 
 // Rotas Games
 import Memorization from './src/views/Games/Memorization';
+import Translate from './src/views/Games/Translate';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -60,6 +61,10 @@ const GamesNavigator = () => {
       <Stack.Screen 
         name="Memorization"
         component={Memorization}
+      />
+      <Stack.Screen 
+        name="Translate"
+        component={Translate}
       />
     </Stack.Navigator>
   )
