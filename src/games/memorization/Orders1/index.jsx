@@ -79,7 +79,7 @@ const Orders1 = ({ navigation, route }) => {
           ))}
         </ScrollView>
         <View>
-          <Timer minutes={0} seconds={30} nextStep={() => setStep(3)} />
+          <Timer minutes={0} seconds={20} nextStep={() => setStep(3)} />
           <CustomButton
             onPress={() => setStep(3)}
             color="gray"
