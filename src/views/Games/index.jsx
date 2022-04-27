@@ -12,6 +12,12 @@ const Games = ({ navigation }) => {
       >
         <Text style={styles.textOptionGame}>Memorização</Text>
       </TouchableOpacity>
+      <TouchableOpacity 
+        onPress={() => navigation.navigate("Translate")}
+        style={styles.optionGame}
+      >
+        <Text style={styles.textOptionGame}>Tradução de imagens</Text>
+      </TouchableOpacity>
     </View>
   )
 }
