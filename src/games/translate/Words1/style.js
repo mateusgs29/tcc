@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   },
   listWords: {
     width: "100%",
-    marginVertical: 20
+    marginTop: 15
+    // marginVertical: 20
   },
   word: {
     textAlign: "center",
@@ -38,8 +39,11 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.gray,
     paddingVertical: 10
   },
+  containerBtn: {
+    alignItems: "center"
+  },
   btnMarginTop: {
-    marginTop: 15
+    marginTop: 15,
   },
   inputAnswers: {
     width: "90%",
@@ -70,7 +74,16 @@ const styles = StyleSheet.create({
   },
   letter: {
     fontSize: 16
-  }
+  },
+  containerWord: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  code: {
+    flexDirection: "row",
+
+  },
+
 })
 
 export default styles
