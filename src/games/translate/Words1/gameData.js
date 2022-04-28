@@ -3,7 +3,7 @@ import { MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-ic
 const size = 18
 const color = "black"
 
-const alphabet = {
+export const alphabet = {
   A: <MaterialCommunityIcons name="hand-peace" size={size} color={color} />,
   B: <MaterialCommunityIcons name="hand-okay" size={size} color={color} />,
   C: <AntDesign name="like1" size={size} color={color} />,
@@ -32,4 +32,20 @@ const alphabet = {
   Z: <MaterialCommunityIcons name="bacteria" size={size} color={color} />
 }
 
-export default alphabet
+export const words = [
+  "Gorila",
+  "Linguagem",
+  "Escola",
+  "Senhora",
+  "Profissional",
+  "Cerebral",
+  "Conquistas",
+  "Festival",
+  "Cozinha",
+  "Arquitetura",
+  "Estudar",
+  "Perfume",
+  "Advogada",
+  "Habilidade",
+  "Pomba"
+]
