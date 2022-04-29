@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, ScrollView, TextInput, KeyboardAvoidingView } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 import CustomButton from '../../../components/CustomButton'
-import Timer from '../../../components/Timer'
 import { alphabet, words } from './gameData'
 import firebase from '../../../config/firebaseConfig'
 import styles from './style'
@@ -34,7 +33,7 @@ const Words1 = ({ navigation, route }) => {
     setLoadingResult(true)
 
     const qtdHits = Object.keys(answers).reduce((result, word) => {
-      if (word.toUpperCase() === answers[word].toUpperCase()) return result + 1
+      if (word.toUpperCase() === answers[word].trim().toUpperCase()) return result + 1
     }, 0)
 
     setResult(qtdHits)
