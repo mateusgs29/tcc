@@ -36,7 +36,7 @@ const Words1 = ({ navigation, route }) => {
 
     const arr = answers.split(',')
     const qtdHits = arr.reduce((result, word) => {
-      if (wordsGame.indexOf(word.trim().toLowerCase()) !== -1) return result+1
+      if (wordsGame.indexOf(word.trim().toLowerCase()) !== -1) return result + 1
       return result
     }, 0)
   

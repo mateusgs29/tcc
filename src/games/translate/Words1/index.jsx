@@ -34,6 +34,7 @@ const Words1 = ({ navigation, route }) => {
 
     const qtdHits = Object.keys(answers).reduce((result, word) => {
       if (word.toUpperCase() === answers[word].trim().toUpperCase()) return result + 1
+      return result
     }, 0)
 
     setResult(qtdHits)
@@ -77,6 +78,7 @@ const Words1 = ({ navigation, route }) => {
           ))}
           <View style={styles.containerBtn}>
             <CustomButton
+              loading={loadingResult}
               onPress={() => checkResult(answers)}
               color="green"
               icon={<FontAwesome5 name="arrow-right" size={20} color="white" />}

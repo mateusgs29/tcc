@@ -50,7 +50,7 @@ const Orders1 = ({ navigation, route }) => {
     const qtdHits = ordersGame.reduce((result, order) => {
 
       if (answers[order.id] && answers[order.id].trim().toLowerCase() === order.order.toLowerCase()) 
-        return result+1
+        return result + 1
       return result
     }, 0)
   
