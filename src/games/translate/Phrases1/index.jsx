@@ -24,36 +24,51 @@ const Phrases1 = ({ navigation, route }) => {
     phrases.sort(() => Math.random() - 0.5)
     
     for (let i = 0; i < qtd; i++) {
-      const code = phrases[i].split("").map(l => {
-        let letter = l.toUpperCase()
-        if (letter === "Ó") letter = "O"
-        if (letter === "Ã") letter = "A"
-        
+
+      const phrase = formatPhrase(phrases[i])
+
+      const code = phrase.split("").map(letter => {
         return alphabet[letter] ? alphabet[letter] : " " 
       })
       
-      arr.push({ phrase: [phrases[i]], code })
+      arr.push({ id: i, phrase, code })
     }
     setPhrasesCode(arr)
   }
 
-  // const checkResult = async (answers) => {
-  //   setLoadingResult(true)
+  const checkResult = async (answers) => {
+    setLoadingResult(true)
 
-  //   const qtdHits = Object.keys(answers).reduce((result, word) => {
-  //     if (word.toUpperCase() === answers[word].toUpperCase()) return result + 1
-  //   }, 0)
+    const qtdHits = Object.keys(answers).reduce((result, phraseIndex) => {
 
-  //   setResult(qtdHits)
+      const phraseFormat = formatPhrase(answers[phraseIndex])
+
+      if (phrasesCode[phraseIndex].phrase === phraseFormat) return result + 1
+
+      return result
+    }, 0)
+
+    setResult(qtdHits)
   
-  //   database.collection(user.uid).doc("games")
-  //     .collection("translate").doc(route.params.doc)
-  //     .set({ hits: qtdHits })
-  //     .then(() => setStep(3))
-  //     .catch(console.log)
-  //     .finally(() => setLoadingResult(false)) 
-  // }
+    database.collection(user.uid).doc("games")
+      .collection("translate").doc(route.params.doc)
+      .set({ hits: qtdHits })
+      .then(() => setStep(3))
+      .catch(console.log)
+      .finally(() => setLoadingResult(false)) 
+  }
   
+  // tira os acentos da frase
+  const formatPhrase = (phrase) => {
+    const newPhrase = phrase.trim().toUpperCase().split("")
+      .map(letter => {
+        if (letter === "Ó") return "O"
+        if (letter === "Ã" || letter === "Á") return "A"
+        return letter
+      }).join("")
+    return newPhrase
+  }
+
   useEffect(() => getPhrases(qtdPhrases), [])
 
   const Game = () => {
@@ -83,13 +98,14 @@ const Phrases1 = ({ navigation, route }) => {
                 numberOfLines={4}
                 type="text"
                 value={answers[index]}
-                onChangeText={text => setAnswers({ ...answers, [index]: text })}
+                onChangeText={text => setAnswers({ ...answers, [phraseCode.id]: text })}
                 style={styles.inputAnswers}
               />
             </View>
           ))}
           <View style={styles.containerBtn}>
             <CustomButton
+              loading={loadingResult}
               onPress={() => checkResult(answers)}
               color="green"
               icon={<FontAwesome5 name="arrow-right" size={20} color="white" />}
@@ -103,26 +119,26 @@ const Phrases1 = ({ navigation, route }) => {
     )
   }
 
-  // const ResultGame = () => {
-  //   return (
-  //     <View style={styles.container}>
-  //       <Text style={styles.title}>Resultado</Text>
-  //       <View>
-  //         <Text style={styles.details}>A quantidade de palavras que você acertou foi: </Text>
-  //         <Text style={styles.result}>{result}/{qtdWords}</Text>
-  //       </View>
-  //       <CustomButton
-  //         onPress={() => {
-  //           navigation.navigate("Games")
-  //         }}
-  //         color="gray"
-  //         newStyle={styles.btnMarginTop}
-  //       >
-  //         Voltar para lista de jogos
-  //       </CustomButton>
-  //     </View>
-  //   )
-  // }
+  const ResultGame = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Resultado</Text>
+        <View>
+          <Text style={styles.details}>A quantidade de frases que você acertou foi: </Text>
+          <Text style={styles.result}>{result}/{qtdPhrases}</Text>
+        </View>
+        <CustomButton
+          onPress={() => {
+            navigation.navigate("Games")
+          }}
+          color="gray"
+          newStyle={styles.btnMarginTop}
+        >
+          Voltar para lista de jogos
+        </CustomButton>
+      </View>
+    )
+  }
 
   return (
     <>
@@ -133,7 +149,7 @@ const Phrases1 = ({ navigation, route }) => {
         </DetailsGame>
       )}
       {step === 2 && <Game />}
-      {/* {step === 3 && <ResultGame />} */}
+      {step === 3 && <ResultGame />}
     </>
   )
 }
