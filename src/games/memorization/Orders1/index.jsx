@@ -67,11 +67,13 @@ const Orders1 = ({ navigation, route }) => {
   useEffect(() => getWords(qtdOrders), [])
 
   const Game = () => {
+    const randomGames = [...ordersGame].sort(() =>  Math.random() - 0.5)
+
     return (
       <View style={styles.containerGame}>
         <Text style={styles.title}>Pedidos</Text>
         <ScrollView style={styles.listWords}>
-          {ordersGame.map((order, index) => (
+          {randomGames.map((order, index) => (
             <View key={`order-${index}`} style={styles.containerOrder}>
               <Image source={order.avatar} style={styles.avatarOrder} />
               <Text style={styles.order}>{order.order}</Text>
