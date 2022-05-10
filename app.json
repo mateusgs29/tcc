@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tcc",
+    "name": "Brainee",
     "slug": "tcc",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tcc.brainee"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.tcc.brainee"
     },
     "web": {
       "favicon": "./assets/favicon.png"
