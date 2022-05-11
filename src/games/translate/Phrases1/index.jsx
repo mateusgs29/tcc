@@ -64,6 +64,8 @@ const Phrases1 = ({ navigation, route }) => {
       .map(letter => {
         if (letter === "Ó") return "O"
         if (letter === "Ã" || letter === "Á") return "A"
+        if (letter === "É" || letter === "Ê") return "E"
+        if (letter === "Ç") return "C"
         return letter
       }).join("")
     return newPhrase
