@@ -34,5 +34,7 @@ export const alphabet = {
 
 export const phrases = [
   "Hoje faz exatamente quinze anos quatro meses e vinte e sete dias que perdi a memória",
-  "Seja franco doutor tenho ou não tenho razão de me esquecer que me lembro das coisas"
+  "Seja franco doutor tenho ou não tenho razão de me esquecer que me lembro das coisas",
+  "Você pode ter tudo e perder ou nada e não perder a diferença dos dois é a memória",
+  "Sem empenho não atingiremos nossos objetivos"
 ]
