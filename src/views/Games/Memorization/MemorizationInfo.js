@@ -4,7 +4,7 @@ import Words1 from "../../../games/memorization/Words1"
 
 const memorizationGamesData = [
   {
-    name: "Palavras 01",
+    name: "Palavras",
     cod: "words1",
     component: Words1,
     difficult: "easy",
@@ -14,7 +14,7 @@ const memorizationGamesData = [
     }
   },
   {
-    name: "Palavras da casa 01",
+    name: "Palavras da casa",
     cod: "houseWords1",
     component: HouseWords1,
     difficult: "medium",
@@ -24,7 +24,7 @@ const memorizationGamesData = [
     }
   },
   {
-    name: "Pedidos 01",
+    name: "Pedidos",
     cod: "orders1",
     component: Orders1,
     difficult: "hard",
